@@ -1,0 +1,14 @@
+.taskCard {
+  display: flex;
+}
+
+.taskCard div {
+  margin: 10px;
+  padding: 10px;
+  flex: 1;
+}
+
+.taskCard div span {
+  font-size: medium;
+  color: rgb(141, 141, 141);
+}
