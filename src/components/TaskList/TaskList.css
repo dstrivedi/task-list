@@ -1,5 +1,6 @@
 .taskCard {
   display: flex;
+  margin-top: 15px;
 }
 
 .taskCard div {
