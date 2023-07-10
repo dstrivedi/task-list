@@ -2,53 +2,24 @@
 import * as React from 'react';
 import Button from '@mui/material/Button'
 import { ButtonGroup, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
+import './AddTask.css'
 
-import { taskProps } from '../../App';
-
-type TaskList = {
-    id: string;
+type taskProps = {
     title: string;
     priority: string;
-    status: string;
-    progress: number;
+    open: boolean;
+    handleOpen: () => void;
+    handleClose: () => void;
+    handlePriority: (value:string) => void;
+    handleTaskValue: (e:React.ChangeEvent<HTMLInputElement>) => void;
+    addTask: ()=> void;
 }
 
-const AddTask : React.FC<taskProps> = ({taskList}) => {
-    const [open, setOpen] = React.useState(false)
-    const [task, setTask] = React.useState<TaskList[]>(taskList)
-    const [title, setTitle] = React.useState('');
-    const [priority, setPriority] = React.useState('')
-    const id = taskList.length - 1;
+const AddTask : React.FC<taskProps> = ({ title, open, priority, handleOpen, handleClose, addTask, handleTaskValue, handlePriority}) => {
 
-    React.useEffect(() => {
-        // console.log(taskList)
-        localStorage.setItem('taskList', JSON.stringify(taskList))
-    },[taskList])
-
-    const handleOpen = () => {
-        setOpen(true)
-    }
-
-    const handleClose = () => {
-        setOpen(false)
-    }
-
-    const handleTaskValue = (e:React.ChangeEvent<HTMLInputElement>) => {
-        // console.log(e.currentTarget.value);
-        setTitle(e.currentTarget.value)
-    }
-
-    const addTask = () => {
-        let newTask : TaskList = {id: '0' + (id+1), title: title, priority: priority, status: 'To Do', progress: 0};
-        setTask([...task , newTask]);
-        console.log(task, newTask)
-    }
-
-    const handlePriority = (value:string) => {
-        setPriority(value);
-    }
     return (
-        <div>
+        <div className="header">
+            <h1>Task list</h1>
             <Button size="small" variant="contained" onClick={handleOpen}>
                 + Add task
             </Button>

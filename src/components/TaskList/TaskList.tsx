@@ -3,12 +3,15 @@ import Card from '@mui/material/Card';
 
 import './TaskList.css';
 
-import { taskProps } from '../../App';
+
+type taskProps = {
+  taskList: any[];
+}
 
 const TaskList : React.FC<taskProps> = ({taskList }) => {
   return (
     <div className="taskList">
-      {taskList.map((task) => {
+      {taskList && taskList.map((task) => {
         return (
           <Card className="taskCard" key={task.id}>
           <div>
