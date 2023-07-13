@@ -3,6 +3,7 @@ import './style.css';
 import Container from '@mui/material/Container';
 import TaskList from './components/TaskList/TaskList';
 import AddTask from './components/AddTask/AddTask';
+import DeleteTask from './components/DeleteTask/DeleteTask';
 
 export type TaskList = {
   id: string;
@@ -12,6 +13,11 @@ export type TaskList = {
   progress: number;
 }
 
+export type obj = {
+  open: boolean;
+  id: number;
+}
+
 const App:React.FC = () => {
 
   const [open, setOpen] = React.useState<boolean>(false)
@@ -19,6 +25,16 @@ const App:React.FC = () => {
   const [title, setTitle] = React.useState<string>('');
   const [priority, setPriority] = React.useState<string>('low')
   const [status, setStatus] = React.useState<string>('To do')
+  const [openConfirmDialog, setConfirmDialog ] = React.useState<obj>({open: false, id:0});
+
+  const handleOpenConfirmDialog = (id:number) : void => {
+    setConfirmDialog({open: true, id: id})
+  }
+
+  const handleCloseConfirmDialog = () : void => {
+    setConfirmDialog({open : false, id: 0})
+  }
+
 
   React.useEffect(() => {
     localStorage.setItem('taskList', JSON.stringify(task))
@@ -33,7 +49,6 @@ const App:React.FC = () => {
   }
 
   const handleTaskValue = (e:React.ChangeEvent<HTMLInputElement>):void => {
-    // console.log(e.currentTarget.value);
     setTitle(e.currentTarget.value)
   }
 
@@ -41,15 +56,22 @@ const App:React.FC = () => {
     if(title == "") {
       alert("Please enter task title")
     } else {
-      const id = task.length > 0 ? task.length : 1;
-      let newTask : TaskList = {id: '0' + (id+1), title: title, priority: priority, status: status, progress: 0};
+      const id = task.length > 0 ? (parseInt(task[task.length-1].id) + 1).toString() : "1";
+      let newTask : TaskList = {id: id, title: title, priority: priority, status: status, progress: 0};
       if(task.length > 0) {
         setTask([...task, newTask])
       } else {
         setTask([newTask]);
       }
-      setOpen(false)
+      setOpen(false);
+      setTitle('');
     }
+  }
+
+  const deleteTask = (id:number) : void => {
+    let newTask = task.filter((t) => parseInt(t.id) != id);
+    setTask(newTask);
+    setConfirmDialog({open: false, id:0});
   }
 
   const handlePriority = (value:string):void => {
@@ -59,7 +81,8 @@ const App:React.FC = () => {
   return (
     <Container maxWidth="md">
       <AddTask open={open} title={title} priority = {priority} handleOpen = {handleOpen} handleClose={handleClose} addTask={addTask} handleTaskValue={handleTaskValue} handlePriority={handlePriority}/>
-      <TaskList taskList={task} />
+      <TaskList taskList={task} handleOpenConfirmDdialog={handleOpenConfirmDialog}/>
+      <DeleteTask deleteTask={deleteTask}  handleCloseConfirmDialog={handleCloseConfirmDialog} dialogObj={openConfirmDialog}/>
     </Container>
   );
 }

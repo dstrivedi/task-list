@@ -13,3 +13,7 @@
   font-size: medium;
   color: rgb(141, 141, 141);
 }
+
+.editIcon, .deleteIcon {
+  cursor: pointer;
+}
