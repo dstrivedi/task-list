@@ -1,6 +1,7 @@
 .taskCard {
   display: flex;
   margin-top: 15px;
+  border-radius: 20px !important;
 }
 
 .taskCard div {

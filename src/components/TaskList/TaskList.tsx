@@ -6,6 +6,7 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import './TaskList.css';
 import DeleteTask from '../DeleteTask/DeleteTask';
+import { CardContent } from '@mui/material';
 
 type taskProps = {
   taskList: any[];
@@ -16,7 +17,7 @@ const TaskList : React.FC<taskProps> = ({taskList, handleOpenConfirmDdialog}) =>
 
   return (
     <div className="taskList">
-      {taskList && taskList.map((task) => {
+      {taskList.length > 0 ? taskList.map((task) => {
         return (
           <Card className="taskCard" key={task.id}>
           <div>
@@ -38,7 +39,7 @@ const TaskList : React.FC<taskProps> = ({taskList, handleOpenConfirmDdialog}) =>
           </div>
         </Card>
         )
-      })}
+      }) : <Card className='taskCard' style={{textAlign: 'center'}}><CardContent style={{fontWeight: "bold", fontSize:'1.2rem'}}>No tasks found</CardContent></Card>}
     </div>
   );
 }
