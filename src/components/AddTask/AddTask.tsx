@@ -28,11 +28,9 @@ const AddTask : React.FC<taskProps> = ({ title, open, priority, handleOpen, hand
                 <DialogContent>
                     <TextField margin='dense' placeholder='Enter task' type='text' value={title} onChange={handleTaskValue} autoFocus fullWidth></TextField>
                     <DialogContentText paddingTop={'15px'}>Priority</DialogContentText>
-                    <ButtonGroup aria-label="text button group">
-                        <Button onClick={() => handlePriority('high')}>High</Button>
-                        <Button onClick={() => handlePriority('medium')}>Medium</Button>
-                        <Button onClick={() => handlePriority('low')}>Low</Button>
-                    </ButtonGroup>
+                    <Button onClick={() => handlePriority('High')} className='high'>High</Button>
+                    <Button onClick={() => handlePriority('Medium')} className='medium'>Medium</Button>
+                    <Button onClick={() => handlePriority('Low')} className='low'>Low</Button>
                 </DialogContent>
                 <DialogActions>
                     <Button size="small" variant='contained' onClick={addTask}>Add</Button>

@@ -6,3 +6,25 @@
 .header h1 {
     flex: 1;
 }
+
+.high {
+    color: red !important;
+    border: 1px solid red !important;
+    border-radius: 4px !important;
+    margin: 10px !important;
+}
+
+.medium {
+    color: rgb(163, 163, 33) !important;
+    border: 1px solid rgb(163, 163, 33) !important;
+    border-radius: 4px !important;
+    margin: 10px !important;
+}
+
+.low {
+    color: green !important; 
+    border: 1px solid green !important;
+    border-radius: 4px !important;
+    margin: 10px !important;
+}
+
