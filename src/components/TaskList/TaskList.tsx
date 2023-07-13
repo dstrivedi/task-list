@@ -5,15 +5,15 @@ import { Icon, IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import './TaskList.css';
-import DeleteTask from '../DeleteTask/DeleteTask';
 import { CardContent } from '@mui/material';
 
 type taskProps = {
   taskList: any[];
+  handleOpen: (flag: string, id?: number) => void;
   handleOpenConfirmDdialog:(id: number) => void;
 }
 
-const TaskList : React.FC<taskProps> = ({taskList, handleOpenConfirmDdialog}) => {
+const TaskList : React.FC<taskProps> = ({taskList, handleOpenConfirmDdialog, handleOpen}) => {
 
   return (
     <div className="taskList">
@@ -34,7 +34,7 @@ const TaskList : React.FC<taskProps> = ({taskList, handleOpenConfirmDdialog}) =>
           </div>
           <div>
             <span>Actions</span>
-            <p><FontAwesomeIcon className='editIcon' icon={faEdit as IconProp} style={{color: "#1b265f",}} />&nbsp;&nbsp;&nbsp;
+            <p><FontAwesomeIcon className='editIcon' onClick={() => handleOpen('edit', task.id)} icon={faEdit as IconProp} style={{color: "#1b265f",}} />&nbsp;&nbsp;&nbsp;
             <FontAwesomeIcon onClick={() => handleOpenConfirmDdialog(task.id)} className='deleteIcon' icon={faTrash as IconProp} style={{color: "#f00000",}} /></p>
           </div>
         </Card>
