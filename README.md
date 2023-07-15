@@ -8,7 +8,7 @@
   </h1>
 
   <p><font size="3">
-      This is a TODO App built using <strong><em>React.JS, Typescript & Material UI</em></strong>. The app allows you to create, manage, and track your daily tasks in a simple and intuitive interface.</p>
+      This is a TODO App built using <strong><em>React.JS, Typescript, HTML, CSS & Material UI</em></strong>. The app allows you to create, manage, and track your daily tasks in a simple and intuitive interface.</p>
       
 
 # Features
