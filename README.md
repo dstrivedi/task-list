@@ -21,9 +21,6 @@
 
 <strong><em>Take a look at the live version here:</em></strong> https://dstrivedi.github.io/task-list/ :octocat: :heart_eyes:
 
-# Clikc on the below link to review the code
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/stackblitz-starters-5oacc9)
-
 # Getting Started
 To run the application locally, follow these steps:
 1. Clone the repository: git clone https://github.com/dstrivedi/task-list.git
