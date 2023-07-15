@@ -92,11 +92,16 @@ const App:React.FC = () => {
   }
 
   const editTask = (id:number) :void => {
-    let modifyTask: TaskList[] = task.filter((t) => parseInt(t.id) == id);
-    modifyTask[0].title = title;
-    modifyTask[0].status = status;
-    modifyTask[0].priority = priority;
-    setOpen({open: false, flag: '', id: 0})
+    let modifyTasks = task.map((t) => {
+      if(parseInt(t.id) == id) {
+        t.title = title;
+        t.status = status;
+        t.priority = priority;
+      }
+      return {...t};
+    });
+    setTask(modifyTasks);
+    setOpen({open: false, flag: '', id: 0});
   }
 
   const handlePriority = (value:string):void => {

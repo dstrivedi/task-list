@@ -10,7 +10,7 @@
   flex: 1;
 }
 
-.taskCard div span {
+.taskCard div>span {
   font-size: medium;
   color: rgb(141, 141, 141);
 }

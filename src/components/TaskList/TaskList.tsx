@@ -5,7 +5,7 @@ import { Icon, IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import './TaskList.css';
-import { CardContent } from '@mui/material';
+import { CardContent, CircularProgress } from '@mui/material';
 
 type taskProps = {
   taskList: any[];
@@ -18,6 +18,14 @@ const TaskList : React.FC<taskProps> = ({taskList, handleOpenConfirmDdialog, han
   return (
     <div className="taskList">
       {taskList.length > 0 ? taskList.map((task) => {
+        let progress = 0;
+        if(task.status == "To do") {
+          progress = 25;
+        } else if(task.status == "In progress") {
+          progress = 50;
+        } else if (task.status = "Done") {
+          progress = 100;
+        }
         return (
           <Card className="taskCard" key={task.id}>
           <div>
@@ -27,6 +35,12 @@ const TaskList : React.FC<taskProps> = ({taskList, handleOpenConfirmDdialog, han
           <div>
             <span>Priority</span>
             <p>{task.priority}</p>
+          </div>
+          <div>
+            <span>Progress</span>
+            <p> 
+              <CircularProgress variant="determinate" size={30} sx={{ml: 1}}  value={progress} color='primary'></CircularProgress>
+            </p>
           </div>
           <div>
             <span>Status</span>
