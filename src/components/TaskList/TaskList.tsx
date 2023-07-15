@@ -17,7 +17,7 @@ const TaskList : React.FC<taskProps> = ({taskList, handleOpenConfirmDdialog, han
 
   return (
     <div className="taskList">
-      {taskList.length > 0 ? taskList.map((task) => {
+      {taskList && taskList.length > 0 ? taskList.map((task) => {
         let progress = 0;
         if(task.status == "To do") {
           progress = 25;
