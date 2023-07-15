@@ -28,7 +28,7 @@ export type addEditDialogObj = {
 const App:React.FC = () => {
 
   const [open, setOpen] = React.useState<addEditDialogObj>({open: false, flag: '', id:0})
-  const [task, setTask] = React.useState<TaskList[]>(JSON.parse(`${localStorage.getItem('taskList')}`))
+  const [task, setTask] = React.useState<TaskList[]>(JSON.parse(`${localStorage.getItem('taskList')}`) || [])
   const [title, setTitle] = React.useState<string>('');
   const [priority, setPriority] = React.useState<string>('low')
   const [status, setStatus] = React.useState<string>('')
@@ -73,9 +73,9 @@ const App:React.FC = () => {
       alert("Please enter task title")
     } else {
       // if(task != null) {
-        const id:string = task!= null ? (parseInt(task[task.length-1].id) + 1).toString() : "1";
+        const id:string = task.length > 0? (parseInt(task[task.length-1].id) + 1).toString() : "1";
         let newTask : TaskList = {id: id, title: title, priority: priority, status: status, progress: 0};
-        if(task.length != null) {
+        if(task.length > 0) {
           setTask([...task, newTask])
         } else {
           setTask([newTask]);
