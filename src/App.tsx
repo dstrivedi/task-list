@@ -72,12 +72,14 @@ const App:React.FC = () => {
     if(title == "") {
       alert("Please enter task title")
     } else {
-      const id = task.length > 0 ? (parseInt(task[task.length-1].id) + 1).toString() : "1";
-      let newTask : TaskList = {id: id, title: title, priority: priority, status: status, progress: 0};
-      if(task.length > 0) {
-        setTask([...task, newTask])
-      } else {
-        setTask([newTask]);
+      if(task != null) {
+        const id = task.length > 0 ? (parseInt(task[task.length-1].id) + 1).toString() : "1";
+        let newTask : TaskList = {id: id, title: title, priority: priority, status: status, progress: 0};
+        if(task.length > 0) {
+          setTask([...task, newTask])
+        } else {
+          setTask([newTask]);
+        }
       }
       setOpen({open: false, flag: '', id: 0})
       setTitle('');
@@ -86,9 +88,10 @@ const App:React.FC = () => {
   }
 
   const deleteTask = (id:number) : void => {
-    let newTask = task.filter((t) => parseInt(t.id) != id);
-    setTask(newTask);
-    setConfirmDialog({open: false, id:0});
+      let newTask = task.filter((t) => parseInt(t.id) != id);
+      setTask(newTask);
+      setConfirmDialog({open: false, id:0});
+    
   }
 
   const editTask = (id:number) :void => {
