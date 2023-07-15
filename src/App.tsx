@@ -72,15 +72,15 @@ const App:React.FC = () => {
     if(title == "") {
       alert("Please enter task title")
     } else {
-      if(task != null) {
-        const id = task.length > 0 ? (parseInt(task[task.length-1].id) + 1).toString() : "1";
+      // if(task != null) {
+        const id = task!= null ? (parseInt(task[task.length-1].id) + 1).toString() : "1";
         let newTask : TaskList = {id: id, title: title, priority: priority, status: status, progress: 0};
         if(task.length > 0) {
           setTask([...task, newTask])
         } else {
           setTask([newTask]);
         }
-      }
+      // }
       setOpen({open: false, flag: '', id: 0})
       setTitle('');
       setStatus('');
