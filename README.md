@@ -18,9 +18,10 @@
 * Delete tasks that are no longer needed.
 * Filter tasks based on their completion status.
 * Responsive design with Material-UI components for a modern look and feel.
- 
 
-# Clikc on the below link to review the code and view the app
+<strong><em>Take a look at the live version here:</em></strong> https://dstrivedi.github.io/task-list/ :octocat: :heart_eyes:
+
+# Clikc on the below link to review the code
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/stackblitz-starters-5oacc9)
 
 # Getting Started
